@@ -1,4 +1,3 @@
-
 const lblOnline = document.querySelector('#lblOnline');
 const lblOffline = document.querySelector('#lblOffline');
 const txtMessage = document.querySelector('#txtMessage');
@@ -16,18 +15,15 @@ socket.on('disconnect',()=>{
     lblOnline.style.display = 'none';
     lblOffline.style.display = '';
 });
-
 socket.on('message',(payload)=>{
     console.log(payload);
 });
-
 btnSend.addEventListener('click',()=>{
     const message = txtMessage.value;
     const payload = {
         message,
         user: 'Juan',
         timestamp: new Date().getTime()
-
     }
     socket.emit('message',payload,(id)=>{
         console.log('Mensaje enviado con id: ',id);

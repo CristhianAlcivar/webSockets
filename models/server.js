@@ -10,7 +10,6 @@ class Server {
         this.port = process.env.PORT;
         this.server = require('http').Server( this.app );
         this.io = require('socket.io')( this.server );
-
         this.paths = {}
 
         // Middlewares
@@ -26,27 +25,20 @@ class Server {
 
 
     middlewares() {
-
         // CORS
         this.app.use( cors() );
-
         // Directorio Público
         this.app.use( express.static('public') );
     }
-
-    routes() {
-        
-        //this.app.use( this.paths.auth, require('../routes/auth'));
-        
+    routes() {    
+        //this.app.use( this.paths.auth, require('../routes/auth'));    
     }
     sockets(){
-        this.io.on('connection', socketController);
-        
+        this.io.on('connection', socketController);     
     }
-
     listen() {
         this.server.listen( this.port, () => {
-            console.log('Servidor corriendo en puerto', this.port );
+            console.log('Server running on port', this.port );
         });
     }
 

@@ -26,10 +26,12 @@ socket.on('disconnect',()=>{
     //console.log('Desconectado al servidor');
     btnAttend.disabled = true;
 });
-socket.on('tickets-earring',(earring)=>{
+socket.on('ticket-earring',(earring)=>{
     if(earring===0){
+        lblEarring.style.display= 'none';
     }else{
         lblEarring.style.display= '';
+        divAlert.style.display = 'none';
         lblEarring.innerText = earring;
     }
 });
